@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StartAI - 会計事務所の付加価値を創造、AIドリブン戦略プラットフォーム</title>
+    <meta name="description" content="会計事務所向けAI戦略プラットフォーム StartAI。課題導出から戦略立案、実行管理まで一気通貫でサポート。月額30,000円から始める労働集約型からの脱却。">
+    <meta name="keywords" content="会計事務所,SaaS,AI,戦略コンサルティング,業務効率化,DX,StartAI">
+    
+    <style>
+        /* リセットCSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* ヘッダー */
+        .header {
+            background: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #2563eb;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 8rem 0 6rem;
+            margin-top: 70px;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #2563eb;
+            border: 2px solid #2563eb;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        /* セクション共通スタイル */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            color: #1e293b;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 課題セクション */
+        .problems {
+            background: #f8fafc;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .problem-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ef4444, #f87171);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .problem-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* 解決策セクション */
+        .solution {
+            background: white;
+        }
+
+        .solution-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-card h3 {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .step-card ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .step-card li {
+            color: #64748b;
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .step-card li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* 機能セクション */
+        .features {
+            background: #f8fafc;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #10b981, #34d399);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+        }
+
+        .feature-card li {
+            color: #64748b;
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .feature-card li::before {
+            content: "•";
+            color: #10b981;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* 価格セクション */
+        .pricing {
+            background: white;
+        }
+
+        .pricing-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            color: #64748b;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            text-align: left;
+            margin: 2rem 0;
+        }
+
+        .pricing-features h4 {
+            color: #1e293b;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .pricing-features ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            color: #64748b;
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .trial-highlight {
+            background: linear-gradient(135deg, #10b981, #34d399);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        /* 最終CTAセクション */
+        .final-cta {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn-white {
+            background: white;
+            color: #1e293b;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        .support-info {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* フッター */
+        .footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .problems-grid,
+            .solution-steps,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* アニメーション */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* スムーススクロール */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">StartAI</div>
+            <ul class="nav-menu">
+                <li><a href="#features">機能</a></li>
+                <li><a href="#pricing">料金</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+            <a href="#trial" class="cta-button">無料トライアル</a>
+        </nav>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>会計事務所の付加価値を創造、<br>AIドリブン戦略プラットフォーム</h1>
+                <p>課題導出から戦略立案、実行管理まで一気通貫でサポート。労働集約型からの脱却を実現するStartAI</p>
+                <div class="hero-buttons">
+                    <a href="#trial" class="btn-primary">無料資料請求</a>
+                    <a href="#demo" class="btn-secondary">デモ予約</a>
+                </div>
+                <div style="margin-top: 2rem; font-size: 0.9rem; color: #64748b;">
+                    ✓ 30日間無料トライアル　✓ 導入実績準備中
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div style="background: linear-gradient(135deg, #2563eb, #3b82f6); width: 400px; height: 300px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; font-weight: bold;">
+                    AI戦略プラットフォーム<br>StartAI
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 課題セクション -->
+    <section class="section problems">
+        <div class="container">
+            <h2 class="section-title">会計事務所が直面する3つの深刻な課題</h2>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">📉</div>
+                    <h3>課題1: 収益性の低下</h3>
+                    <p>価格競争に巻き込まれ、利益率が年々低下<br>従来の記帳代行では差別化が困難</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⚡</div>
+                    <h3>課題2: DX対応の遅れ</h3>
+                    <p>デジタル化が進まず、業務効率が改善されない<br>他業界との生産性格差が拡大</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🎯</div>
+                    <h3>課題3: 高度な戦略提案ができない</h3>
+                    <p>クライアントから求められる経営助言に応えられない<br>単純な数字の報告に留まってしまう</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem; font-size: 1.2rem; font-weight: bold; color: #ef4444;">
+                これらの課題を解決しなければ、会計事務所の未来はありません
+            </div>
+        </div>
+    </section>
+
+    <!-- 解決策セクション -->
+    <section class="section solution">
+        <div class="container">
+            <h2 class="section-title">StartAIが実現する、会計事務所の変革</h2>
+            <p class="section-subtitle">
+                AIが外部データを統合分析し、クライアント企業の課題を自動導出。戦略立案から実行管理まで一気通貫でサポートします
+            </p>
+            <div class="solution-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>課題の自動導出</h3>
+                    <ul>
+                        <li>会計システム、POSデータ等を総合分析</li>
+                        <li>AIが潜在的な経営課題を発見</li>
+                        <li>優先度付きの改善提案</li>
+                    </ul>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>戦略の複数パターン提案</h3>
+                    <ul>
+                        <li>データに基づく具体的な改善策を自動生成</li>
+                        <li>複数の戦略オプションを比較検討可能</li>
+                        <li>ROI予測・リスク分析</li>
+                    </ul>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>実行フェーズの完全サポート</h3>
+                    <ul>
+                        <li>WBS自動作成・進捗管理</li>
+                        <li>AI電話による定期チェック</li>
+                        <li>感応度分析・業界ベンチマーク提供</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 機能セクション -->
+    <section class="section features" id="features">
+        <div class="container">
+            <h2 class="section-title">StartAIの革新的機能</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3>インテリジェント課題導出</h3>
+                    <ul>
+                        <li>複数システムからのデータ統合</li>
+                        <li>AI分析による課題の可視化</li>
+                        <li>優先度付きの改善提案</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>戦略立案エンジン</h3>
+                    <ul>
+                        <li>データドリブンな戦略オプション生成</li>
+                        <li>ROI予測・リスク分析</li>
+                        <li>業界ベンチマークとの比較</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>実行管理プラットフォーム</h3>
+                    <ul>
+                        <li>WBS自動生成・更新</li>
+                        <li>AI電話による進捗確認</li>
+                        <li>リアルタイム感応度分析</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>高度アウトプット生成</h3>
+                    <ul>
+                        <li>経営レポート自動作成</li>
+                        <li>業界比較分析</li>
+                        <li>改善効果の可視化</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 価格セクション -->
+    <section class="section pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">今すぐ始められる、シンプルな料金体系</h2>
+            <div class="pricing-card">
+                <div class="price">月額30,000円<span style="font-size: 1rem;">〜</span></div>
+                <div class="price-note">クライアント数に応じた従量課金・詳細は個別見積もり</div>
+                
+                <div class="pricing-features">
+                    <h4>導入サポート:</h4>
+                    <ul>
+                        <li>初期設定完全サポート</li>
+                        <li>既存システムとの連携支援</li>
+                        <li>操作研修・マニュアル提供</li>
+                    </ul>
+                </div>
+
+                <div class="trial-highlight">
+                    <h4>無料トライアル</h4>
+                    <p>まずは効果を実感してください。30日間無料でお試しいただけます</p>
+                </div>
+
+                <a href="#trial" class="btn-primary" style="display: inline-block; margin-top: 1rem;">無料トライアルを始める</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 最終CTAセクション -->
+    <section class="section final-cta" id="contact">
+        <div class="container">
+            <h2>会計事務所の未来を、今日から変える</h2>
+            <p>StartAIで、クライアントから真に必要とされる会計事務所に変わりませんか？</p>
+            <div class="cta-buttons">
+                <a href="#download" class="btn-white">今すぐ無料資料をダウンロード</a>
+                <a href="#demo" class="btn-white">デモンストレーション予約</a>
+                <a href="#consultation" class="btn-white">導入相談（無料）</a>
+            </div>
+            <div class="support-info">
+                サポート: 平日9:00-18:00 電話・メールサポート
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 StartAI. All rights reserved. | 会計事務所向けAI戦略プラットフォーム</p>
+        </div>
+    </footer>
+
+    <script>
+        // スムーススクロール
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // スクロール時のアニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, observerOptions);
+
+        // アニメーション対象要素を監視
+        document.querySelectorAll('.problem-card, .step-card, .feature-card, .pricing-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // CTAボタンのクリック追跡（実装時にGoogleAnalyticsなどに接続）
+        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-white, .cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                // アナリティクス追跡コードをここに追加
+                console.log('CTA clicked:', this.textContent);
+            });
+        });
+
+        // モバイルメニュー（簡易版）
+        const navToggle = document.createElement('button');
+        navToggle.innerHTML = '☰';
+        navToggle.style.cssText = `
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            @media (max-width: 768px) {
+                display: block;
+            }
+        `;
+        
+        if (window.innerWidth <= 768) {
+            document.querySelector('.nav-container').appendChild(navToggle);
+        }
+    </script>
+</body>
+</html>
